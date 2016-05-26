@@ -1,0 +1,23 @@
+RewriteEngine  on
+
+RewriteRule "^c/([0-9]{8})$"  "class.php?i=$1" [PT]
+RewriteRule "^c/js/(.*)$"  "js/$1" [PT]
+RewriteRule "^c/css/(.*)$"  "css/$1" [PT]
+RewriteRule "^c/fonts/(.*)$"  "fonts/$1" [PT]
+
+RewriteRule "^s/([0-9]{10})$"  "student.php?i=$1" [PT]
+RewriteRule "^s/js/(.*)$"  "js/$1" [PT]
+RewriteRule "^s/css/(.*)$"  "css/$1" [PT]
+RewriteRule "^s/fonts/(.*)$"  "fonts/$1" [PT]
+
+RewriteRule "^b/([0-9]{7})$"  "batch.php?i=$1" [PT]
+RewriteRule "^b/js/(.*)$"  "js/$1" [PT]
+RewriteRule "^b/css/(.*)$"  "css/$1" [PT]
+RewriteRule "^b/fonts/(.*)$"  "fonts/$1" [PT]
+
+RewriteRule "^bs$"  "branch.php" [PT]
+RewriteRule "^bs/js/(.*)$"  "js/$1" [PT]
+RewriteRule "^bs/css/(.*)$"  "css/$1" [PT]
+RewriteRule "^bs/fonts/(.*)$"  "fonts/$1" [PT]
+
+RewriteRule "^.*/search.php$"  "search.php" [PT]

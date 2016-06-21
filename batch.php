@@ -456,6 +456,11 @@
 							});
 						</script>
 						<style>
+						
+							td
+							{
+								vertical-align: middle;
+							}
 							.label
 							{
 								font-size: 0.75em;
@@ -488,11 +493,12 @@
 								}							
 							?>
 						</style>
-						<table id="ClassStudents" data-order='[[ 4, "dsc" ]]' data-page-length='25'>
+						<table id="ClassStudents" data-order='[[ 5, "dsc" ]]' data-page-length='25'>
 							<thead>
 								<tr>
 									<th> # </th>
 									<th> Roll Number </th>
+									<th> Image </th>
 									<th> Name </th>
 									<th> GPA </th>
 									<th> CGPA </th>
@@ -512,6 +518,7 @@
 											$ClassID = floor(intval($DataSet['RegdNo'])/100)%10;							
 											echo '<tr class="datarow"><td> #'.$i.'</td>'.
 													'<td>'.$DataSet['RegdNo'].'</td>'.
+													'<td><img src="'.SITE_ROOT.'funcs.images.php?i='.$DataSet['RegdNo'].'" class="iconImg" /></td>'.
 													'<td>'.$DataSet['Name'].'<span class="label sec'.$ClassID.'">'.str_replace(' ', '', SectionOf($DataSet['RegdNo'])).'</td>'.
 													'<td>'.$DataSet['GPA'.$CurrSem].'</span><span class="arrow-'.(($DataSet['GPA'.$CurrSem]>$DataSet['GPA'.($CurrSem-1)])?'up':'down').'"></span></td>'.
 													'<td>'.$DataSet['CGPA'.$CurrSem].'</td></tr>';
@@ -529,6 +536,7 @@
 											
 											echo '<tr><td> #'.$i.'</td>'.
 													'<td>'.$DataSet['RegdNo'].'</td>'.
+													'<td><img src="'.SITE_ROOT.'funcs.images.php?i='.$DataSet['RegdNo'].'" class="iconImg" /></td>'.
 													'<td>'.$DataSet['Name'].'<span class="label sec'.$ClassID.'">'.str_replace(' ', '', SectionOf($DataSet['RegdNo'])).'</span></td>'.
 													'<td>'.$DataSet['GPA'.$CurrSem].'</td>'.
 													'<td>'.$DataSet['CGPA'.$CurrSem].'</td></tr>';

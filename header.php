@@ -88,10 +88,28 @@
 			}				
 		});
 		
-		$('#Search').focusout(function(){
-			animateHide();
+		var focusOn = false;
+		var focusOutSearch = false;
+		$( "#SearchRes" ).hover(
+		  function() {
+			focusOn = true;
+		  }, function() {
+			focusOn = false;
+			if( focusOutSearch == true )
+				animateHide();
+		  }
+		);
+		
+		$('#Search').focusin(function(){
+			focusOutSearch = false;
 		});
 		
+		$('#Search').focusout(function(){
+			focusOutSearch = true;
+			if( focusOn == false )
+				animateHide();
+		});
+				
 		function animateShow()
 		{
 			$("#SearchRes").css('top',$('#header').height()*1.5);

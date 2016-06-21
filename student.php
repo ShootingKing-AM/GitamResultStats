@@ -38,7 +38,9 @@
 						<dt>GPA :</dt>
 						<dd><?php echo $Details['GPA'.GetCurrentSem($Details)]; ?></dd>
 					</dl>
-					
+					<div class="imagebox">
+						<img src="<?php echo SITE_ROOT;?>funcs.images.php?i=<?php echo $RegdNo?>" width=100% height=100%/>
+					</div>
 					<h2> Previous SemResults : </h2>
 					<select id="SemSelector">
 						<?php					

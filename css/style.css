@@ -1083,26 +1083,34 @@
 				}
 	dl 
 	{
-		width: 100%;
+		width: 60%;
 		overflow: hidden;
 		padding: 0;
-		margin: 0
+		margin: 0;
+		display:inline-block;
 	}
 	dt 
 	{
-		float: left;
-		width: 47.5%;
-		text-align: right;
+		text-align: left;
 		padding-right: 1em;
-		margin: 0
+		margin: 0;
+		float: left;
 	}
 	dd 
 	{
-		float: left;
-		width: 47.5%;
 		font-weight: 600;
 		padding: 0;
 		margin: 0
+	}
+	.imagebox
+	{
+		float: left;
+		width: 30%;    
+		padding: 6%;
+	}
+	.iconImg
+	{
+		width: 40px;
 	}
 	.studentbox
 	{

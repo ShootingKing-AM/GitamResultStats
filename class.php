@@ -343,16 +343,23 @@
 					</div>
 				
 					<div class="studentbox">
+						<style>
+							td
+							{
+								vertical-align: middle;
+							}
+						</style>
 						<h3> Students : </h3>
 						<script>
 							$(function(){
 								$('#ClassStudents').DataTable();
 							});
 						</script>
-						<table id="ClassStudents" data-order='[[ 3, "dsc" ]]' data-page-length='25'>
+						<table id="ClassStudents" data-order='[[ 4, "dsc" ]]' data-page-length='25'>
 							<thead>
 								<tr>
 									<th> Roll Number </th>
+									<th> Image </th>
 									<th> Name </th>
 									<th> GPA </th>
 									<th> CGPA </th>
@@ -366,8 +373,9 @@
 										$res = mysqli_query($db, $sql);
 										
 										while( $DataSet = mysqli_fetch_array($res, MYSQLI_ASSOC) )
-										{											
+										{
 											echo '<tr class="datarow" ><td>'.$DataSet['RegdNo'].'</td>'.
+													'<td><img src="'.SITE_ROOT.'funcs.images.php?i='.$DataSet['RegdNo'].'" class="iconImg" /></td>'.
 													'<td>'.$DataSet['Name'].'<span class="arrow-'.(($DataSet['GPA'.$CurrSem]>$DataSet['GPA'.($CurrSem-1)])?'up':'down').'"></span></td>'.
 													'<td>'.$DataSet['GPA'.$CurrSem].'</td>'.
 													'<td>'.$DataSet['CGPA'.$CurrSem].'</td></tr>';
@@ -381,6 +389,7 @@
 										while( $DataSet = mysqli_fetch_array($res, MYSQLI_ASSOC) )
 										{											
 											echo '<tr><td>'.$DataSet['RegdNo'].'</td>'.
+													'<td><img src="'.SITE_ROOT.'funcs.images.php?i='.$DataSet['RegdNo'].'" class="iconImg" /></td>'.													
 													'<td>'.$DataSet['Name'].'</td>'.
 													'<td>'.$DataSet['GPA'.$CurrSem].'</td>'.
 													'<td>'.$DataSet['CGPA'.$CurrSem].'</td></tr>';

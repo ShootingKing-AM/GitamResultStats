@@ -114,7 +114,7 @@
 								$res = mysqli_query($db, $sql);
 								while( $Data = mysqli_fetch_array($res) )
 								{
-									echo '<li><a target="_blank" href="'.SITE_ROOT.'s/'.$Data['RegdNo'].'">'.$Data['Name'].'</a>('.$Data["CGPA$CurrSem"].')</li>';
+									echo '<li><a href="'.SITE_ROOT.'s/'.$Data['RegdNo'].'">'.$Data['Name'].'</a>('.$Data["CGPA$CurrSem"].')</li>'; //target="_blank" 
 								}
 							?>		
 							<ol>

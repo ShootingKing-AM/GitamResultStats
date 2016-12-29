@@ -34,7 +34,7 @@
 					Data = Data.trim();
 					
 					// var path = window.location.href.substring(0, (window.location.href.lastIndexOf("/")+1));					
-					window.open( '<?php echo SITE_ROOT;?>s/'+Data, '_blank');
+					window.open( '<?php echo SITE_ROOT;?>s/'+Data, '_self');
 				});
 			});
 		</script>
@@ -352,7 +352,12 @@
 						<h3> Students : </h3>
 						<script>
 							$(function(){
-								$('#ClassStudents').DataTable();
+								$('#ClassStudents').DataTable({
+									dom: 'Bfrtip',
+									buttons: [
+										'copy', 'csv', 'excel', 'pdf', 'print'
+									]
+								} );
 							});
 						</script>
 						<table id="ClassStudents" data-order='[[ 4, "dsc" ]]' data-page-length='25'>

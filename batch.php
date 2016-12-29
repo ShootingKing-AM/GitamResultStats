@@ -26,7 +26,7 @@
 						<ul>
 						<?php for( $i = 1; $i <= $NoOfSec; $i++ )
 						{
-							echo '<li><a target="_blank" href="'.SITE_ROOT.'c/'.$BatchID.$i.'">Section '. SectionOf($BatchID.$i). '</a></li>';
+							echo '<li><a href="'.SITE_ROOT.'c/'.$BatchID.$i.'">Section '. SectionOf($BatchID.$i). '</a></li>'; //target=_blank
 						}
 						?>
 						</ul>
@@ -399,7 +399,12 @@
 					<div class="studentbox">
 						<script>
 							$(function(){
-								$('#Classes').DataTable();
+								$('#Classes').DataTable({
+									dom: 'Bfrtip',
+									buttons: [
+										'copy', 'csv', 'excel', 'pdf', 'print'
+									]
+								} );
 							});
 						</script>
 						<table id="Classes" data-order='[[ 0, "asc" ],[ 1, "asc" ]]' data-page-length='25'>
@@ -443,7 +448,12 @@
 						<h3> Students : </h3>
 						<script>
 							$(function(){
-								$('#ClassStudents').DataTable();
+								$('#ClassStudents').DataTable( {
+									dom: 'Bfrtip',
+									buttons: [
+										'copy', 'csv', 'excel', 'pdf', 'print'
+									]
+								} );
 							});
 							$(function(){
 								$('#ClassStudents').on('click','.datarow',function () {
@@ -451,7 +461,7 @@
 									Data = Data.trim();
 									
 									// var path = window.location.href.substring(0, (window.location.href.lastIndexOf("/")+1));					
-									window.open( '<?php echo SITE_ROOT;?>s/'+Data, '_blank');
+									window.open( '<?php echo SITE_ROOT;?>s/'+Data, '_self');
 								});
 							});
 						</script>

@@ -9,6 +9,10 @@
 		<meta name="keywords" content="gitam,git,reults,stats,statistics,graphs,charts" />
 		<meta name="author" content="Harsha Raghu">
 		
+		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo SITE_ROOT;?>images/fav/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="<?php echo SITE_ROOT;?>images/fav/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo SITE_ROOT;?>images/fav/favicon-16x16.png">
+		
 		<meta property="og:url" content="http://gitstats.otakud.in" />
 		<meta property="og:type" content="article" />
 		<meta property="og:title" content="GIT Stats." />
@@ -30,7 +34,17 @@
 		<script src="<?php echo SITE_ROOT;?>js/less.min.js" type="text/javascript"></script>
 		
 		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+		
   		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+
 		<noscript>
 			<link rel="stylesheet" href="<?php echo SITE_ROOT;?>css/skel.css" />
 			<link rel="stylesheet" href="<?php echo SITE_ROOT;?>css/style.css" />
@@ -40,24 +54,50 @@
 	</head>
 	<?php if( $Page == 'GIT Stats' ) echo '<body class="landing">'; else echo '<body>'; ?>
 <style>
-	#SearchRes
+	@media (min-width: 980px) 
 	{
-		z-index: 100;
-		position: fixed;
-		
-		top:0px;
-		left:50%;
-		width:45%;
-		background: #444;
-		background-image: linear-gradient(#444 80%,rgba(255,255,255,0.1));
-		color: white;
-		transition: .5s all;
-		overflow:hidden;
-		padding: 20px;
-		border: 2px solid;
-		border-radius: 7px;
-		opacity:0;
+		#SearchRes
+		{
+			z-index: 100;
+			position: fixed;
+			
+			top:0px;
+			left:50%;
+			width:40%;
+			background: #444;
+			background-image: linear-gradient(#444 80%,rgba(255,255,255,0.1));
+			color: white;
+			transition: .5s all;
+			overflow:hidden;
+			padding: 20px;
+			border: 2px solid;
+			border-radius: 7px;
+			opacity:0;
+		}
 	}
+	@media (max-width: 979px) 
+	{
+		#SearchRes
+		{
+			z-index: 100;
+			position: fixed;
+			
+			top:0px;
+			left:10%;
+			width:89%;
+			background: #444;
+			background-image: linear-gradient(#444 80%,rgba(255,255,255,0.1));
+			color: white;
+			transition: .5s all;
+			overflow:hidden;
+			padding: 5px;
+			padding-top: 15px;
+			border: 1px solid;
+			border-radius: 3px;
+			opacity:0;
+		}
+	}
+	
 	#SearchRes > ul
 	{
 		list-style-type: none;
@@ -112,8 +152,16 @@
 				
 		function animateShow()
 		{
-			$("#SearchRes").css('top',$('#header').height()*1.5);
-			$("#SearchRes").css('left','50%');
+			$("#SearchRes").css('top',$('#Search').parent().parent().parent().height()*1.2 + 'px');
+			if( $(window).width() <= 980 )
+			{
+				$("#SearchRes").css('left','10%');
+			}
+			else
+			{
+				$("#SearchRes").css('left','50%');
+			}
+				
 			$("#SearchRes").css('height','auto');
 			$("#SearchRes").css('opacity','1');
 		}
@@ -131,10 +179,10 @@
 				<h1><a id="sitename" href="<?php echo SITE_ROOT;?>index.php">GIT Stats</a></h1>
 				<nav id="nav">
 					<ul>
-						<li><a href="<?php echo SITE_ROOT;?>index.php">Home</a></li>
-						<li><a href="<?php echo SITE_ROOT;?>branch.php">Branches</a></li>
+						<li><a href="<?php echo SITE_ROOT;?>index.php" style="color: #cee8d8;text-decoration: none;">Home</a></li>
+						<li><a href="<?php echo SITE_ROOT;?>branch.php" style="color: #cee8d8;text-decoration: none;">Branches</a></li>
 						<li><input type="text" name="Search" placeholder="RegdNo, Name, Classid etc..." id="Search"/></a></li>
+						<li><div id="SearchRes"></div></li>
 					</ul>
 				</nav>
 			</header>
-			<div id="SearchRes"></div>

@@ -1,5 +1,6 @@
 <?php
 	include_once 'db.php';
+	error_reporting(0);
 	if(!isset($_POST) || !isset($_POST['arg']))
 	{
 		exit; die;
@@ -31,7 +32,7 @@
 	
 	if( is_numeric($arg) && (strpos($arg, '.') == false) )
 	{
-		$sql = "SELECT Name,RegdNo FROM resultsfinalultimate WHERE RegdNo LIKE '$arg%' LIMIT 15";
+		$sql = "SELECT Name,RegdNo FROM resultsfinalultimate WHERE RegdNo LIKE '$arg%'";
 		
 	}
 	else
@@ -47,21 +48,23 @@
 			$sql .= "Name LIKE '%".str_replace(' ', '%', $keyword)."%' OR ";
 			// var_dump($sql);
 		}
-		$sql .= "Name LIKE '%$arg%' LIMIT 15";
+		$sql .= "Name LIKE '%$arg%'";// LIMIT 15
 		// echo $sql;
 		$arg = mysqli_real_escape_string($db, $arg);
 	}
 	// echo $sql.'<br/>';
 	$EchoData = '';
 	
-	$res = mysqli_query($db, $sql);
+	$res = mysqli_query($db, $sql.'  LIMIT 15');
+	$NumResults = mysqli_num_rows(mysqli_query($db, $sql));
 	if( mysqli_num_rows($res) > 0 )
 	{
-		$EchoData = '<ul>';
+		$EchoData = '<ul style="line-height:1.6em;">';
 		while( $array = mysqli_fetch_array($res, MYSQL_ASSOC) )
 		{
 			$EchoData .= '<li><a href="'.SITE_ROOT.'s/'.$array['RegdNo'].'">'.$array['Name'].'</a>('.$array['RegdNo'].')</li>';
 		}
+		$EchoData .= "<li>Total results: $NumResults</li></ul>";
 	}
 	mysqli_close($db);
 	echo $EchoData;

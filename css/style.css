@@ -911,9 +911,9 @@
 						-o-transition: color 0.2s ease-in-out;
 						-ms-transition: color 0.2s ease-in-out;
 						transition: color 0.2s ease-in-out;
-						color: #cee8d8;
+						color: #4dac71;
 						display: inline-block;
-						text-decoration: none;
+						text-decoration: underline;
 					}
 
 						#header nav > ul > li a:hover {

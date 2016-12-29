@@ -26,7 +26,7 @@
 						
 						while( $array = mysqli_fetch_array($res) )
 						{
-							echo '<li><a target="_blank" href="'.SITE_ROOT.'b/'.floor(intval($array['RegdNo'])/1000).'">'.BatchNo($array['RegdNo']).'</a></li>';
+							echo '<li><a href="'.SITE_ROOT.'b/'.floor(intval($array['RegdNo'])/1000).'">'.BatchNo($array['RegdNo']).'</a></li>'; //target="_blank"
 						}
 					?>
 					</ul>

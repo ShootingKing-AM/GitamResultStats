@@ -100,7 +100,7 @@
 		
 		$i = 0;
 		do{
-			$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+			$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 			$i++;
 			// echo $array['RegdNo'].'<br/>';
 		}
@@ -117,7 +117,7 @@
 		
 		$i = 0;
 		do{
-			$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+			$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 			$i++;
 		}
 		while( $array['RegdNo'] != $RegdNo );
@@ -134,7 +134,7 @@
 		
 		$i = 0;
 		do{
-			$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+			$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 			$i++;
 		}
 		while( $array['RegdNo'] != $RegdNo );
@@ -150,7 +150,7 @@
 		$i = 0;
 		
 		do{
-			$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+			$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 			$i++;
 		}
 		while( $array['RegdNo'] != $RegdNo );
@@ -167,7 +167,7 @@
 		$i = 0;
 		
 		do{
-			$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+			$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 			$i++;
 		}
 		while( $array['RegdNo'] != $RegdNo );
@@ -183,7 +183,7 @@
 		$i = 0;
 		
 		do{
-			$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+			$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 			$i++;
 		}
 		while( $array['RegdNo'] != $RegdNo );

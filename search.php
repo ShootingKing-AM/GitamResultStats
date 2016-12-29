@@ -60,7 +60,7 @@
 	if( mysqli_num_rows($res) > 0 )
 	{
 		$EchoData = '<ul style="line-height:1.6em;">';
-		while( $array = mysqli_fetch_array($res, MYSQL_ASSOC) )
+		while( $array = mysqli_fetch_array($res, MYSQLI_ASSOC) )
 		{
 			$EchoData .= '<li><a href="'.SITE_ROOT.'s/'.$array['RegdNo'].'">'.$array['Name'].'</a>('.$array['RegdNo'].')</li>';
 		}

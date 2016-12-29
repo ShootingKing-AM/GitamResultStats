@@ -18,7 +18,7 @@
 						<h4> Number of Sections : <?php
 							$sql = "SELECT COUNT(*) FROM resultsfinalultimate WHERE RegdNo LIKE '$BatchID%01'";
 							$res = mysqli_query($db, $sql);
-							$array = mysqli_fetch_array($res, MYSQL_ASSOC);
+							$array = mysqli_fetch_array($res, MYSQLI_ASSOC);
 							$NoOfSec = $array['COUNT(*)'];
 							echo $NoOfSec;
 						?>
@@ -89,7 +89,7 @@
 											$sql = "SELECT MaxStudentsCGPA,SemNo FROM resultsclasstats WHERE ClassID LIKE '$BatchID".$i."' ORDER BY SemNo ASC";
 											$res = mysqli_query($db, $sql);											
 											
-											while( $DataArr = mysqli_fetch_array($res, MYSQL_ASSOC) )
+											while( $DataArr = mysqli_fetch_array($res, MYSQLI_ASSOC) )
 											{
 												echo $DataArr['MaxStudentsCGPA'];
 												
@@ -179,7 +179,7 @@
 											$sql = "SELECT MaxIndexCGPA,SemNo FROM resultsclasstats WHERE ClassID LIKE '$BatchID".$i."' ORDER BY SemNo ASC";
 											$res = mysqli_query($db, $sql);											
 											
-											while( $DataArr = mysqli_fetch_array($res, MYSQL_ASSOC) )
+											while( $DataArr = mysqli_fetch_array($res, MYSQLI_ASSOC) )
 											{
 												$Range = intval(substr($DataArr['MaxIndexCGPA'],0,1));
 												
@@ -274,7 +274,7 @@
 											$sql = "SELECT AvgCGPA,SemNo FROM resultsclasstats WHERE ClassID LIKE '$BatchID".$i."' ORDER BY SemNo ASC";
 											$res = mysqli_query($db, $sql);											
 											
-											while( $DataArr = mysqli_fetch_array($res, MYSQL_ASSOC) )
+											while( $DataArr = mysqli_fetch_array($res, MYSQLI_ASSOC) )
 											{
 												echo substr($DataArr['AvgCGPA'],0,6);
 												
@@ -364,7 +364,7 @@
 											$sql = "SELECT NoOfPassCGPA,SemNo FROM resultsclasstats WHERE ClassID LIKE '$BatchID".$i."' ORDER BY SemNo ASC";
 											$res = mysqli_query($db, $sql);											
 											
-											while( $DataArr = mysqli_fetch_array($res, MYSQL_ASSOC) )
+											while( $DataArr = mysqli_fetch_array($res, MYSQLI_ASSOC) )
 											{
 												echo $DataArr['NoOfPassCGPA'];
 												

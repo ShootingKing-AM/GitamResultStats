@@ -9,7 +9,7 @@
 		$sql = "SELECT RegdNo FROM resultsfinalultimate WHERE RegdNo LIKE '".$ClassIDSet."%01'";		
 		$ClassIDArrayRes = mysqli_query($db, $sql);
 		
-		while( $ClassIDArray = mysqli_fetch_array($ClassIDArrayRes, MYSQL_ASSOC) )
+		while( $ClassIDArray = mysqli_fetch_array($ClassIDArrayRes, MYSQLI_ASSOC) )
 		{
 			$ClassID = floor(intval($ClassIDArray['RegdNo'])/100);
 			// echo $ClassID;
@@ -81,18 +81,18 @@
 			}
 			
 			$sql = "SELECT SUM(CGPA".$CurrSem.") AS Total FROM resultsfinalultimate WHERE RegdNo LIKE '".$ClassID."%'";
-			$TotalCGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQL_ASSOC);
+			$TotalCGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQLI_ASSOC);
 			$AvgCGPA = intval($TotalCGPA['Total'])/66;
 			
 			$sql = "SELECT SUM(GPA".$CurrSem.") AS Total FROM resultsfinalultimate WHERE RegdNo LIKE '".$ClassID."%'";
-			$TotalGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQL_ASSOC);
+			$TotalGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQLI_ASSOC);
 			$AvgGPA = intval($TotalGPA['Total'])/66;
 			
 			$sql = "SELECT COUNT(*) FROM resultsfinalultimate WHERE RegdNo LIKE '".$ClassID."%' AND CGPA$CurrSem > 0";
-			$NoOfPassCGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQL_ASSOC);
+			$NoOfPassCGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQLI_ASSOC);
 			
 			$sql = "SELECT COUNT(*) FROM resultsfinalultimate WHERE RegdNo LIKE '".$ClassID."%' AND GPA$CurrSem > 0";
-			$NoOfPassGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQL_ASSOC);
+			$NoOfPassGPA = mysqli_fetch_array(mysqli_query($db, $sql), MYSQLI_ASSOC);
 						
 			$sql = "CREATE TABLE IF NOT EXISTS resultsclasstats ( ID INT NOT NULL AUTO_INCREMENT, SemNo TEXT, ClassID TEXT, MaxStudentsCGPA TEXT, MaxIndexCGPA TEXT, MaxStudentsGPA TEXT, MaxIndexGPA TEXT, AvgCGPA TEXT, AvgGPA TEXT, NoOfPassCGPA TEXT, NoOfPassGPA TEXT, PRIMARY KEY (ID) )";
 			mysqli_query( $db, $sql );

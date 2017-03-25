@@ -102,6 +102,21 @@
 	{
 		list-style-type: none;
 	}
+	#SearchRes::-webkit-scrollbar 
+	{
+		width: 1em;
+	}
+	 
+	#SearchRes::-webkit-scrollbar-track 
+	{
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	}
+	 
+	#SearchRes::-webkit-scrollbar-thumb 
+	{
+		background-color: darkgrey;
+		outline: 1px solid slategrey;
+	}
 </style>
 <script>
 	$(function() {
@@ -114,6 +129,26 @@
 						if( data.trim() != '' )
 						{
 							$('#SearchRes').html(data.trim());
+							
+							var top_of_element = $('#SearchRes').offset().top;
+							var bottom_of_element = $('#SearchRes').offset().top + $('#SearchRes').outerHeight();
+							var bottom_of_screen = $('#SearchRes').scrollTop() + $(window).height();
+							// console.log( 'Top of element : ' + top_of_element + ' Bottomof Elem : ' + bottom_of_element + ' BottOFScreen: ' + bottom_of_screen );
+							if((bottom_of_screen > top_of_element) && (bottom_of_screen > bottom_of_element))
+							{
+								// The element is visible, do something
+								console.log( "Inview" );
+								$('#SearchRes').css('overflow-y', 'auto');
+								$('#SearchRes').css('height', 'auto');
+							}
+							else 
+							{
+								// The element is not visible, do something else
+								// console.log( "Outview" + " Elem Height : " + $('#SearchRes').outerHeight() );
+								$('#SearchRes').outerHeight(bottom_of_screen-top_of_element);////bottom_of_element-bottom_of_screen+$('#SearchRes').height());
+								// console.log( "eOutview" + " Elem Height : " + $('#SearchRes').outerHeight() );
+								$('#SearchRes').css('overflow-y', 'scroll');
+							}
 						}
 						else
 						{
@@ -162,7 +197,7 @@
 				$("#SearchRes").css('left','50%');
 			}
 				
-			$("#SearchRes").css('height','auto');
+			//$("#SearchRes").css('height','auto');
 			$("#SearchRes").css('opacity','1');
 		}
 		
